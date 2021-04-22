@@ -12,4 +12,10 @@ public class Book extends Product {
     public String getAuthor() {
         return author;
     }
+    public boolean matches(String author ) {
+        if (super.matches(author)) {
+            return true;
+        }
+        return getAuthor().equalsIgnoreCase(author);
+    }
 }
