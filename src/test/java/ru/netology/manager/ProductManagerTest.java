@@ -66,5 +66,11 @@ class ProductManagerTest {
         Product[] expected = new Product[0];
         assertArrayEquals(expected, actual);
     }
+    @Test
+    public void shouldManufacturerName() {
 
+        Product[] actual = manager.searchBy("Samsung");
+        Product[] expected = new Product[]{item5};
+        assertArrayEquals(expected, actual);
+    }
 }
