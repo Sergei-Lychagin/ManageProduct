@@ -6,7 +6,6 @@ public class ProductRepository {
     private Product[] items = new Product[0];
 
     public void save(Product item) {
-        //this.products = add(products, item);
         int length = items.length + 1;
         Product[] tmp = new Product[length];
         System.arraycopy(items, 0, tmp, 0, items.length);

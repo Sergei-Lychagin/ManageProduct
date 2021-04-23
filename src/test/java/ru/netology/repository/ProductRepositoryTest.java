@@ -1,5 +1,6 @@
 package ru.netology.repository;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
@@ -13,11 +14,15 @@ class ProductRepositoryTest {
     private Book first = new Book(1, "fffff", 500, "sssss");
     private Smartphone second = new Smartphone(2, "Samsung", 5000, "Samsung");
 
+    @BeforeEach
+    public void setup() {
+        repository.save(first);
+        repository.save(second);
+    }
+
     @Test
     void save() {
 
-        repository.save(first);
-        repository.save(second);
         Product[] expected = new Product[]{first, second};
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
@@ -26,13 +31,11 @@ class ProductRepositoryTest {
 
     @Test
     void removeById() {
-        repository.save(first);
-        repository.save(second);
+
         int idToRemove = 2;
         repository.removeById(idToRemove);
         Product[] actual = repository.findAll();
         Product[] expected = new Product[]{first};
-
         assertArrayEquals(expected, actual);
     }
 }
